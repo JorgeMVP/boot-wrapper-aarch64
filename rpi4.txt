@@ -1,0 +1,7 @@
+KERNEL=whereveritis
+
+LD=aarch64-linux-gnu-ld CC=aarch64-linux-gnu-gcc ./^Cnfigure --with-kernel-dir=$KERNEL --with-dtb=$KERNEL/arch/arm64/boot/dts/broadcom/rpi/bcm2838-rpi-4-b.dtb --enable-psci --with-cmdline="8250.nr_uarts=1 earlycon=uart8250,mmio32,0xfe215040 console=ttyS0,115200 root=/dev/mmcblk1p2 rootwait" --host=cc
+
+make CNTFRQ=54000000
+
+aarch64-linux-gnu-objcopy -O binary linux-system.axf armstub8.bin 
